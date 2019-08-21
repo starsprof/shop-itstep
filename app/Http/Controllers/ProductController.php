@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -29,8 +30,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.products.create', [
-            'product' => [],
-            'categories' => Category::with('children')->where('parent_id', '0')->get(),
+            'categories' => Category::with('children')->get(),
             'delimiter' => ''
         ]);
     }
@@ -43,17 +43,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        $request->validate([
-//            'title' => 'required',
-//            'price' => 'required',
-//
-//        ]);
 
-        Product::create($request->all());
+//dd($request->all());
+        $product = new Product($request->all());
+        $product->slug = Str::slug($product->title);
+        $product->image = 'image';
+        $product->save();
 
-//        if($request->input('categories'))
-//
-//        endif
+
         return redirect()->route('products.index')
             ->with('success','Product created successfully.');
     }

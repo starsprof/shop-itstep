@@ -12,7 +12,7 @@
 </select>
 
 <label for="">Найменование</label>
-<input type="text" class="form-control" name="title" placeholder="Заголовок категории" value="{{$category->title ?? ''}}" required>
+<input type="text" class="form-control" name="title" placeholder="Заголовок категории" value="{{ old('title', isset($category->title) ? $category->title : null )}}" required>
 
 <label for="">Краткое описание</label>
 <input type="text" class="form-control" name="description" placeholder="Краткое описание" value="{{$category->description ?? ''}}" required>

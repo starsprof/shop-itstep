@@ -1,5 +1,5 @@
 @foreach ($categories as $category)
-    <option value="{{$category->id or ''}}"
+    <option value="{{$category->id}}"
             @isset($product->id)
                 @foreach ($product->category as $category_product)
                     @if ($category->id == $category_product->id)
@@ -8,7 +8,7 @@
                 @endforeach
             @endisset
     >
-        {!! $delimiter ?? '' !!}{{$category_list->title ?? ''}}
+        {!! $delimiter ?? '' !!}{{$category->title ?? ''}}
     </option>
 
     @isset($category_list->children)
