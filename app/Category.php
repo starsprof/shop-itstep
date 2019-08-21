@@ -34,6 +34,8 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $children
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
  */
 class Category extends Model
 {

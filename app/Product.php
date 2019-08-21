@@ -36,5 +36,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-    //
+    protected $fillable = ['title','description', 'code', 'image', 'price'];
+
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

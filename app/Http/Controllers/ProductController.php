@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->paginate(5);
+
+        return view('admin.products.index',compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +28,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create', [
+            'product' => [],
+            'categories' => Category::with('children')->where('parent_id', '0')->get(),
+            'delimiter' => ''
+        ]);
     }
 
     /**
@@ -35,7 +43,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $request->validate([
+//            'title' => 'required',
+//            'price' => 'required',
+//
+//        ]);
+
+        Product::create($request->all());
+
+//        if($request->input('categories'))
+//
+//        endif
+        return redirect()->route('products.index')
+            ->with('success','Product created successfully.');
     }
 
     /**
@@ -46,7 +66,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.show',compact('product'));
     }
 
     /**
@@ -57,7 +77,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -69,7 +89,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+//        $request->validate([
+//            'title' => 'required',
+//            'price' => 'required',
+//
+//        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('products.index')
+            ->with('success','Product updated successfully');
     }
 
     /**
@@ -80,6 +109,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success','Product deleted successfully');
     }
 }
