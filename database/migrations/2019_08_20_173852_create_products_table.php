@@ -21,8 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
-            $table->string('gallery')->nullable();
-            $table->float('price');
+            $table->text('gallery')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
 
             $table->foreign('category_id')

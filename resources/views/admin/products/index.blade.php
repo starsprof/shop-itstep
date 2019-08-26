@@ -25,7 +25,7 @@
             <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td>{{$product->image}}</td>
+                    <td><img class="img-thumbnail" style="max-width: 150px" src="{{$product->image}}" /></td>
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->price}}</td>

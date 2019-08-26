@@ -1,3 +1,5 @@
 *
 !public/
 !.gitignore
+!products.json
+!public/product_images
