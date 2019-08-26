@@ -2,4 +2,4 @@
 !public/
 !.gitignore
 !products.json
-!public/product_images
+!public/product_images/
