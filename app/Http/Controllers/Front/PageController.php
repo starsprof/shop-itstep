@@ -6,14 +6,15 @@
  * Time: 14:20
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 
-class PageController
+class PageController extends Controller
 {
     public function index()
     {

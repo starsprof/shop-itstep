@@ -16,18 +16,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function (){
+Route::namespace('Admin')
+    ->middleware(['auth'])
+    ->prefix('admin')
+    ->group(function (){
     Route::get('/', 'DashboardController@index')->name('admin.index');
     Route::resource('/category', 'CategoryController');
     Route::resource('/products','ProductController');
 });
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::view('/', 'pages.main');
-Route::get('/collection', 'PageController@index');
-Route::get('/collection/detail', 'PageController@detail')->name('detail');
-Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
-Route::view('/cart', 'pages.cart');
+Route::namespace('Front')
+    ->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::view('/', 'pages.main');
+    Route::get('/collection', 'PageController@index');
+    Route::get('/collection/detail', 'PageController@detail')->name('detail');
+    Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
+    Route::view('/cart', 'pages.cart');
+});
+
