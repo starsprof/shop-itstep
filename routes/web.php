@@ -29,3 +29,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/', 'pages.main');
 Route::get('/collection', 'PageController@index');
 Route::view('/collection/detail', 'pages.detail');
+Route::view('/cart', 'pages.cart');
