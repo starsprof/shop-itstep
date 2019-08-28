@@ -40,10 +40,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/collection' ) }}">Женщины</a>
+                        <a class="nav-link" href="{{ route('category', ['id' => 1]) }}">Женщины</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Мужчины</a>
+                        <a class="nav-link" href="{{ route('category', ['id' => 2]) }}">Мужчины</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Скидки</a>

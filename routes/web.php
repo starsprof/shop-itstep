@@ -28,5 +28,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::view('/', 'pages.main');
 Route::get('/collection', 'PageController@index');
-Route::view('/collection/detail', 'pages.detail');
+Route::get('/collection/detail', 'PageController@detail')->name('detail');
+Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
 Route::view('/cart', 'pages.cart');

@@ -33,6 +33,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $composition
+ * @property string|null $line
+ * @property string|null $color
+ * @property string|null $size
+ * @property string|null $height
+ * @property-read \App\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereComposition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereHeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereLine($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSize($value)
  */
 class Product extends Model
 {
@@ -46,5 +58,17 @@ class Product extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+    public function getGalleryAttribute($value)
+    {
+        return json_decode($value);
+    }
+    public function getSizeAttribute($value)
+    {
+        return json_decode($value);
+    }
+    public function getHeightAttribute($value)
+    {
+        return json_decode($value);
     }
 }
