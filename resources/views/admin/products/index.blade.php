@@ -18,17 +18,20 @@
             <thead>
             <th>Картинка</th>
             <th>Найменование</th>
-            <th>Описание</th>
+            <th>Артикул</th>
             <th>Цена</th>
+            <th>Категория</th>
             <th>Действие</th>
             </thead>
             <tbody>
             @foreach($products as $product)
                 <tr>
-                    <td><img class="img-thumbnail" style="max-width: 150px" src="{{$product->image}}" /></td>
+                    <td><img class="img-thumbnail" style="max-width: 100px" src="{{$product->image}}" /></td>
                     <td>{{$product->title}}</td>
-                    <td>{{$product->description}}</td>
+                    <td>{{$product->code}}</td>
                     <td>{{$product->price}}</td>
+                    <td>{{$product->category_id}}</td>
+
                     <td>
 
                         <form action="{{ route('products.destroy', $product) }}" method="POST" onsubmit="return confirm('Удалить?')">

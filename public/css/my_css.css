@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    background: #ffffff;
+    font-family: arial, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    height: 100vh;
+
+}
+
+ol, ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    line-height: 18px;
+    outline: none;
+}
+a:hover{
+    color: orangered;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-size: 17px;
+}
+.navbar-brand {
+    margin-right: 3rem;
+}
+footer{
+    padding: 20px 0;
+}
+footer .nav .nav-item{
+    padding-right: 100px;
+}
+footer .nav .nav-item:last-child{
+    padding-right: 0;
+}
+footer .nav .nav-item .nav-link {
+    padding: .5rem 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+footer .copyright{
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+.subscribe-box #subscribe {
+    padding: 4px 10px 5px;
+    width: 141px;
+    color: #7c7a7b;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(124, 122, 123, 0.35);
+}
+.subscribe-box #dosubscribe {
+
+    color: #FFF;
+    padding: 1px 10px 3px;
+    margin-left: 6px;
+    cursor: pointer;
+    height: 29px;
+}
+.social{
+    margin-top: 10px;
+}
+.social a {
+    margin-right: 12px;
+}
+
+
+/*----main-page------*/
+
+main .pb-4, .py-4{
+    padding: 0 !important;
+}
+.slider img{
+    width: 100%;
+}
+.catalog-wrap{
+    margin-bottom: 20px;
+}
+.left-sidebar{
+    margin-right: 20px;
+}
+.list-group{
+    margin-bottom: 40px;
+}
+.list-group .list-group-item{
+    color: #000;
+}

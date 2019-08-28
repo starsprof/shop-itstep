@@ -16,9 +16,10 @@
             категорию</a>
         <table class="table table-bordered">
             <thead>
-            <th>Найменование</th>
-            <th>Публикация</th>
-            <th class="text-center">Краткое описание</th>
+            <th class="text-center">Найменование</th>
+            <th class="text-center">Публикация</th>
+            <th class="text-center">Родительская <br> категория</th>
+            <th class="text-center">Создание</th>
             <th class="text-center">Действие</th>
             </thead>
             <tbody>
@@ -26,7 +27,8 @@
                 <tr>
                     <td>{{$category->title}}</td>
                     <td>{{$category->publish}}</td>
-                    <td>{{$category->description}}</td>
+                    <td>{{$category->parent_id}}</td>
+                    <td>{{$category->create_by}}</td>
                     <td>
 
                         <form action="{{ route('category.destroy', $category) }}" method="POST" onsubmit="return confirm('Удалить?')">

@@ -25,3 +25,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function (){
     Route::resource('/products','ProductController');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('/', 'pages.main');
+Route::get('/collection', 'PageController@index');
+Route::view('/collection/detail', 'pages.detail');
