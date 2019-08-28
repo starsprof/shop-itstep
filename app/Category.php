@@ -36,6 +36,7 @@ use Illuminate\Support\Str;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $children
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
+ * @property-read \App\Category $parent
  */
 class Category extends Model
 {

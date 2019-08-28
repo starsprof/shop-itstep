@@ -59,16 +59,21 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    public function getGalleryAttribute($value)
-    {
-        return json_decode($value);
-    }
-    public function getSizeAttribute($value)
-    {
-        return json_decode($value);
-    }
-    public function getHeightAttribute($value)
-    {
-        return json_decode($value);
-    }
+//    public function getGalleryAttribute($value)
+//    {
+//        return json_decode($value);
+//    }
+//    public function getSizeAttribute($value)
+//    {
+//        return json_decode($value);
+//    }
+//    public function getHeightAttribute($value)
+//    {
+//        return json_decode($value);
+//    }
+    protected $casts = [
+        'size' => 'array',
+        'height' => 'array',
+        'gallery' => 'array'
+    ];
 }

@@ -37,22 +37,26 @@ class PageController
 
         $categoriesIds = Category::find($categoryId)->children()->pluck('id');
         $categoriesIds[] = $categoryId;
-        $products = Product::whereIn('category_id', $categoriesIds)->paginate(16);
         $parentCategoryId = Category::findOrFail($categoryId)->parent_id;
-        $sizes = [];
-        foreach ($products->pluck('size')->toArray() as $array ){
-            foreach ($array as $elem){
-                $sizes[] = $elem;
-            }
-        }
+
+
+        $productSizes = Product::whereIn('category_id', $categoriesIds)->get('size')->pluck('size')->toArray();
+        $sizes = array_merge(...$productSizes);
         $sizes = array_unique($sizes);
-
+        $selectedSizes = [];
         if(isset($request->all()['size'])){
-            $inputSizes = $request->all()['size'];
-            var_dump($inputSizes);
+            $selectedSizes = $request->all()['size'];
+            $conditions = [];
+            foreach ($selectedSizes as $size) {
+                    $conditions[] = ['size', 'like', '%' . $size . '%'];
+            }
+            $products = Product::whereIn('category_id', $categoriesIds)->where($conditions)->paginate(16);
+
+        }else {
+            $products = Product::whereIn('category_id', $categoriesIds)->paginate(16);
         }
 
-        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'sizes'));
+        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'sizes', 'selectedSizes'));
     }
 
 
