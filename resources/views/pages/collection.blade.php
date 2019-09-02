@@ -104,8 +104,7 @@
                                     <div class="price">{{$product->price}}
                                         <span>{{$product->price}}</span>
                                     </div>
-                                    <a class="add-to-cart" href="{{ route('detail', ['id' => $product->id]) }}">В
-                                        корзину</a>
+                                    <a class="add-to-cart" href="{{ route('detail', ['id' => $product->id]) }}">Подробнее</a>
                                 </div>
                                 </div>
                             </div>
