@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{url('/')}}">Главная</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page"></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$categoryTitle }}</li>
             </ol>
         </nav>
         <div class="catalog-wrap d-flex flex-nowrap">

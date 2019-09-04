@@ -36,9 +36,19 @@ class PageController extends Controller
     {
         $categoryId = (int)$request->all()['id'];
 
+//        if ($categoryId == 1){
+//            $categoryTitle = 'Женская коллекция';
+//        }else{
+//            $categoryTitle = "Мужская коллекция";
+//        }
+
+       $categoryTitle = Category::find($categoryId)->title;
+
         $categoriesIds = Category::find($categoryId)->children()->pluck('id');
         $categoriesIds[] = $categoryId;
         $parentCategoryId = Category::findOrFail($categoryId)->parent_id;
+
+
 
 
         $productSizes = Product::whereIn('category_id', $categoriesIds)->get('size')->pluck('size')->toArray();
@@ -57,7 +67,7 @@ class PageController extends Controller
             $products = Product::whereIn('category_id', $categoriesIds)->paginate(16);
         }
 
-        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'sizes', 'selectedSizes'));
+        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'categoryTitle',  'sizes', 'selectedSizes'));
     }
 
 

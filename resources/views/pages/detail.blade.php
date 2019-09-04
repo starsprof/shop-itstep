@@ -5,6 +5,17 @@
         /** @var \App\Product $product */
     @endphp
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{url('/')}}">Главная</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#"></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"></li>
+            </ol>
+        </nav>
         <div class="catalog-item d-flex flex-nowrap" style="padding: 50px 0">
             <div class="small-images js-smallImageBlock">
                 @foreach($product->gallery as $image)
