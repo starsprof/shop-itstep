@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{url('/')}}">Главная</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{$categoryTitle }}</li>
+                <li class="breadcrumb-item active" aria-current="page"></li>
             </ol>
         </nav>
         <div class="catalog-wrap d-flex flex-nowrap">
@@ -93,7 +93,7 @@
                                         <li><a href="#" data-tip="Quick View"><i class="fas fa-eye"></i></a></li>
                                         <li><a href="#" data-tip="Add to Wishlist"><i
                                                         class="fas fa-shopping-bag"></i></a></li>
-                                        <li><a href="#" data-tip="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                        <li><a href="{{ url('cart/add') }}" data-tip="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
                                         </li>
                                     </ul>
                                     {{--<span class="product-new-label">New</span>--}}
