@@ -19,19 +19,13 @@
         <div class="catalog-item d-flex flex-nowrap" style="padding: 50px 0">
             <div class="small-images js-smallImageBlock">
                 @foreach($product->gallery as $image)
-                    <a href="#" class=""><img src="{{ $image }}"></a>
+                    <a href="#" ><img class="gallery-link" src="{{ $image }}"></a>
                 @endforeach
             </div>
             <div class="big-image">
                 <a href="#">
-                    <img src="{{ $product->image }}" class="preview-zoom">
+                    <img id="gallery-main" src="{{ $product->image }}" class="preview-zoom">
                 </a>
-
-                {{--<div class="images-wrap" style="margin-top: 10px">--}}
-                {{--@foreach($product->gallery as $image)--}}
-                {{--<img src="{{ $image }}" style="width: 25%">--}}
-                {{--@endforeach--}}
-                {{--</div>--}}
             </div>
             <div class="catalog-item-textblock" style="width: 40%">
                 <h1 class="catalog-item-title">{{ $product->title }}</h1>
@@ -49,12 +43,12 @@
                 </div>
 
 
-                <form action="">
+                <form action="{{ route('cart-add', ['id' => $product->id]) }}">
                     <div class="catalog-item-block">
                         <p class="text-up">Выберите размер</p>
                         @foreach($product->size as $key => $size)
                             <div class="sizeheight">
-                                <input type="radio" name="size" aria-label="Размер" value="{{$key}}"> {{ $size }}
+                                <input type="radio" name="size" aria-label="Размер" value="{{$size}}"> {{ $size }}
                             </div>
                         @endforeach
                     </div>
@@ -76,3 +70,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{asset('js/details.js')}}"></script>
+@endpush

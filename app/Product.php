@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 /**
  * App\Product
@@ -46,7 +47,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereLine($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSize($value)
  */
-class Product extends Model
+class Product extends Model implements Buyable
 {
     protected $fillable = ['title','description', 'code', 'image', 'price', 'category_id'];
 
@@ -59,21 +60,49 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-//    public function getGalleryAttribute($value)
-//    {
-//        return json_decode($value);
-//    }
-//    public function getSizeAttribute($value)
-//    {
-//        return json_decode($value);
-//    }
-//    public function getHeightAttribute($value)
-//    {
-//        return json_decode($value);
-//    }
     protected $casts = [
         'size' => 'array',
         'height' => 'array',
         'gallery' => 'array'
     ];
+
+    /**
+     * Get the identifier of the Buyable item.
+     *
+     * @return int|string
+     */
+    public function getBuyableIdentifier($options = null)
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the description or title of the Buyable item.
+     *
+     * @return string
+     */
+    public function getBuyableDescription($options = null)
+    {
+        return $this->title;
+    }
+
+    /**
+     * Get the price of the Buyable item.
+     *
+     * @return float
+     */
+    public function getBuyablePrice($options = null)
+    {
+        return $this->price;
+    }
+
+    /**
+     * Get the weight of the Buyable item.
+     *
+     * @return float
+     */
+    public function getBuyableWeight($options = null)
+    {
+        return 1;
+    }
 }

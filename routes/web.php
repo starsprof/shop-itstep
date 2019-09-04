@@ -35,6 +35,10 @@ Route::namespace('Front')
     Route::get('/collection/detail', 'PageController@detail')->name('detail');
     Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
     Route::get('/cart', 'CartController@index')->name('cart');
-    Route::get('/cart/add', 'CartController@addItem');
+
+    Route::get('/cart/add/{id}', 'CartController@addItem')->name('cart-add');
+    Route::get('/cart/remove/{id}', 'CartController@removeItem')->name('cart-remove');
+    Route::get('/cart/update/{rowId}', 'CartController@updateItem')->name('cart-update');
+
 });
 

@@ -4,24 +4,51 @@ namespace App\Http\Controllers\Front;
 
 
 use App\Http\Controllers\Controller;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Product;
+use Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     public function index()
     {
-        //return view('pages.cart');
-
-        return Cart::content();
-
+        Cart::restore(Auth::id());
+//        Cart::destroy();
+//        dd(Cart::content());
+        return view('pages.cart');
     }
-    public function addItem()
+    public function addItem(Request $request, $id)
     {
 
+        $size = $request->input('size');
 
-        return Product::all();
+        $product = Product::findOrFail($id);
+        if(!$size){
+            $size = $product->size[0];
+        }
+        Cart::add($product, 1, ['size' => $size]);
+        Cart::store(Auth::id());
+        return redirect()->route('cart');
+    }
+
+    public function removeItem($rowId)
+    {
+        Cart::remove($rowId);
+        return redirect()->route('cart');
+    }
+
+    public function updateItem(Request $request, $rowId)
+    {
+        $quantity = $request->input('quantity');
+        $size = $request->input('size');
+
+        $cartItem = Cart::get($rowId);
+        Cart::remove($rowId);
+        $product = Product::findOrFail($cartItem->id);
+        Cart::add($product, $quantity,  ['size' => $size]);
+        Cart::store(Auth::id());
+        return redirect()->route('cart');
 
     }
 }
