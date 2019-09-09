@@ -115,7 +115,7 @@ footer .copyright {
 
 /*----main-page------*/
 
-main .pb-4, .py-4 {
+main.pb-4, main.py-4 {
     padding: 0 !important;
 }
 
