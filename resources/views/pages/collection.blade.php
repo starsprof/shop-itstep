@@ -84,8 +84,10 @@
                                 <div class="product-wrap">
                                 <div class="product-image">
                                     <a href="#">
-                                        <img class="pic-1" src="{{$product->image}}">
-                                        <img class="pic-2" src="{{$product->image}}">
+                                        <img  class="pic-1" src="{{$product->image}}" alt="">
+                                        @if(isset($product->gallery[0]))
+                                            <img alt="" class="pic-2" src="{{$product->gallery[0]}}">
+                                        @endif
                                     </a>
                                     <ul class="social">
                                         <li><a href="#" data-tip="Quick View"><i class="fas fa-eye"></i></a></li>

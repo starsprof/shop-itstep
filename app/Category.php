@@ -37,6 +37,8 @@ use Illuminate\Support\Str;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $children
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
  * @property-read \App\Category $parent
+ * @property-read int|null $children_count
+ * @property-read int|null $products_count
  */
 class Category extends Model
 {

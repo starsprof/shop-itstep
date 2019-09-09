@@ -18,7 +18,8 @@
         </nav>
         <div class="catalog-item d-flex flex-nowrap" style="padding: 50px 0">
             <div class="small-images js-smallImageBlock">
-                @foreach($product->gallery as $image)
+                <a href="#" ><img class="gallery-link" src="{{ $product->image }}"></a>
+            @foreach($product->gallery as $image)
                     <a href="#" ><img class="gallery-link" src="{{ $image }}"></a>
                 @endforeach
             </div>

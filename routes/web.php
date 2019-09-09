@@ -34,11 +34,29 @@ Route::namespace('Front')
     Route::get('/collection', 'PageController@index');
     Route::get('/collection/detail', 'PageController@detail')->name('detail');
     Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
-    Route::get('/cart', 'CartController@index')->name('cart');
 
-    Route::get('/cart/add/{id}', 'CartController@addItem')->name('cart-add');
-    Route::get('/cart/remove/{id}', 'CartController@removeItem')->name('cart-remove');
-    Route::get('/cart/update/{rowId}', 'CartController@updateItem')->name('cart-update');
+    Route::get('/cart', 'CartController@index')
+        ->name('cart')
+        ->middleware('auth');
+    Route::get('/cart/add/{id}', 'CartController@addItem')
+        ->name('cart-add')
+        ->middleware('auth');
+    Route::get('/cart/remove/{id}', 'CartController@removeItem')
+        ->name('cart-remove')
+        ->middleware('auth');
+    Route::get('/cart/update/{rowId}', 'CartController@updateItem')
+        ->name('cart-update')
+        ->middleware('auth');
 
+    Route::group([
+        'middleware' => 'auth',
+        'prefix' => 'orders'
+    ], function () {
+        Route::get('create', 'OrderController@create');
+        Route::post('payment', 'OrderController@payment')->name('payment');
+        Route::get('store', 'OrderController@store');
+        Route::get('/', 'OrderController@index');
+        Route::get('view/{id}', 'OrderController@view');
+    });
 });
 

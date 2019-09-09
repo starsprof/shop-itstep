@@ -43,7 +43,7 @@
 
                                 </div>
 
-                                <div class="variations values" style="display: block;">
+                                <div class="variations values" style="display: none;">
                                     <form action="{{ route('cart-update', ['rowId' => $cartItem->rowId]) }}">
                                         <div id="variation_quantity">
                                             <div class="val"><label>Количество:</label>
@@ -122,22 +122,22 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <div class="cart-promocode">
-                        <div class="promocode-form">
-                            <label class="promocode-label"><b>Промокод:</b></label>
-                            <input id="promocode_input" type="text" value="" placeholder="Введите код">
-                            <input type="button" class="promo-button button grey" value="Применить">
-                        </div>
+{{--                    <div class="cart-promocode">--}}
+{{--                        <div class="promocode-form">--}}
+{{--                            <label class="promocode-label"><b>Промокод:</b></label>--}}
+{{--                            <input id="promocode_input" type="text" value="" placeholder="Введите код">--}}
+{{--                            <input type="button" class="promo-button button grey" value="Применить">--}}
+{{--                        </div>--}}
 
-                        <div class="promocode-error-msg"></div>
+{{--                        <div class="promocode-error-msg"></div>--}}
 
-                    </div>
+{{--                    </div>--}}
                     <div class="block-price-amount">
                         <ins>итого:</ins>
 
                         <p class="price">{{ Cart::total() }} <span class="rub">Р</span></p>
                     </div>
-                    <a id="checkout" href="" class="button bg-warning yellow">ОФОРМИТЬ ЗАКАЗ</a>
+                    <a id="checkout" href="{{ action('\App\Http\Controllers\Front\OrderController@create') }}" class="button bg-warning yellow">ОФОРМИТЬ ЗАКАЗ</a>
                     <!-- <a href="javascript:void(0)" class="fastorder button grey button-pad-fix2">БЫСТРЫЙ ЗАКАЗ</a> -->
                 </div>
             </div>

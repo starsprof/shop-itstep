@@ -46,6 +46,7 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereHeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereLine($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSize($value)
+ * @property-read int|null $tags_count
  */
 class Product extends Model implements Buyable
 {

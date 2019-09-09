@@ -30,6 +30,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read int|null $orders_count
  */
 class User extends Authenticatable
 {
@@ -61,4 +64,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }
