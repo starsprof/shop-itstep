@@ -11,9 +11,9 @@
                     <a href="{{url('/')}}">Главная</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#"></a>
+                    <a href="#">{{$product->category->title}}</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page"></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$product->title}}</li>
             </ol>
         </nav>
         <div class="catalog-item d-flex flex-nowrap" style="padding: 50px 0">

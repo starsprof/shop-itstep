@@ -62,7 +62,7 @@
                                 <td class="tar" id="QUANTITY">{{ Cart::count() }}</td>
                             </tr>
                             <tr>
-                                <td><b>Стоимость заказа:</b></td>
+                                <td><b>Итого:</b></td>
                                 <td class="tar PRICE">
                                     <span id="total-sum" class="text-danger">{{ Cart::total() }} </span><span
                                         class="rub">P</span>
@@ -71,13 +71,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="buttons">
-                        <div class="block-price-amount">
-                            <ins>итого:</ins>
 
-                            <p class="price">{{ Cart::total() }} <span class="rub">Р</span></p>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -88,8 +82,9 @@
                         @csrf
                         <label for="address">Адрес:</label>
                         <br>
-                        <textarea name="address" id="address" cols="30" rows="10"></textarea>
+                        <textarea name="address" id="address" cols="60" rows="5"></textarea>
                         <br>
+                        <p style="margin-top: 20px"><b>Способ оплаты:</b></p>
                         <input type="radio" name="payment[]" id="type1"> <label for="type1">Способ оплаты 1</label>
                         <br>
                         <input type="radio" name="payment[]" id="type2"> <label for="type2">Способ оплаты 2</label>
@@ -98,7 +93,7 @@
                         <br>
                         <input type="radio" name="payment[]" id="type4"> <label for="type4">Способ оплаты4</label>
                         <br>
-                        <input type="submit" value="Оплатить">
+                        <input type="submit" class="bnt bg-warning" value="Оплатить">
                     </form>
                 </div>
             </div>

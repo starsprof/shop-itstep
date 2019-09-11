@@ -3,13 +3,15 @@
 @section('content')
 
     <div class="container">
-
+        @php
+            /** @var \App\Category[] $category */
+        @endphp
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{url('/')}}">Главная</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">{{$categoryTitle}}</li>
+                <li class="breadcrumb-item active" aria-current="page"></li>
             </ol>
         </nav>
         <div class="catalog-wrap d-flex flex-nowrap">

@@ -43,7 +43,7 @@
 
                                 </div>
 
-                                <div class="variations values" style="display: none;">
+                                <div class="variations values js-none">
                                     <form action="{{ route('cart-update', ['rowId' => $cartItem->rowId]) }}">
                                         <div id="variation_quantity">
                                             <div class="val"><label>Количество:</label>
@@ -78,15 +78,15 @@
                                                 2L210280M/49425N/7925C
                                             </div>
                                         </div>
-                                        <input type="submit" value="Сохранить">
+                                        <button type="submit save">Сохранить</button>
                                     </form>
                                 </div>
 
 
                                 <div class="buttons" style="padding: 10px 0">
 
-                                    <a class="change text-dark" href="#">Изменить</a>
-                                    <a class="remove text-dark" href="{{ route('cart-remove', $cartItem->rowId) }}">Удалить</a>
+                                    <button class="change text-dark" href="#">Изменить</button>
+                                    <button class="remove text-dark" href="{{ route('cart-remove', $cartItem->rowId) }}">Удалить</button>
                                     <div class="button-popup">
                                     <span class="error-button error_1"
                                           style="display: none;">Нет других предложений</span>
@@ -97,7 +97,9 @@
                         </div>
                     </div>
 
-
+                    @push('scripts')
+                        <script src="{{asset('js/cart.js')}}"></script>
+                    @endpush
                 @endforeach
             </div>
             <div class="cart-content-right">
@@ -145,3 +147,7 @@
     </div>
 
 @endsection
+
+{{--@push('scripts')--}}
+    {{--<script src="{{asset('js/cart.js')}}"></script>--}}
+{{--@endpush--}}

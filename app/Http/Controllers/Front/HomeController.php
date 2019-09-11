@@ -35,7 +35,7 @@ class HomeController extends Controller
 //        echo array_pop($tmp);
 //
 //        return;
-        return view('home');
+        return view('pages.main');
     }
 
 

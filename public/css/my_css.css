@@ -30,6 +30,14 @@ a {
 a:hover {
     color: orangered;
 }
+
+.js-block{
+    display: block;
+}
+.js-none{
+    display: none;
+}
+
 .grey {
     color: #000000;
     background: #e1e1e1;
@@ -117,6 +125,7 @@ footer .copyright {
 
 main.pb-4, main.py-4 {
     padding: 0 !important;
+    min-height: 500px;
 }
 
 .slider img {
@@ -624,27 +633,27 @@ select option {
     padding: 20px;
     height: 330px;
 }
-.cart-content-right .total table {
+ .total table {
     color: #000000;
     font-size: 12px;
     line-height: 20px;
     width: 100%;
 }
-.cart-content-right .total {
+ .total {
     border-bottom: 1px dashed #b0b0b0;
     padding: 10px 0 12px;
 }
-.cart-content-right .total table td {
+ .total table td {
     padding-bottom: 8px;
     vertical-align: top;
 }
-.cart-content-right .total table td:first-of-type {
+ .total table td:first-of-type {
     font-weight: bold;
     color: #2b2b2b;
     font-size: 13px;
     letter-spacing: 0.1px;
 }
-.cart-content-right .total table .tar {
+ .total table .tar {
     color: #000000;
     text-align: right;
     line-height: 16px;
@@ -659,7 +668,7 @@ select option {
 .promocode-form {
     text-align: left;
 }
-.cart-content-right .buttons .cart-promocode .promocode-label {
+.buttons .cart-promocode .promocode-label {
     width: 77px;
     font-weight: bold;
 }
@@ -669,7 +678,7 @@ select option {
     padding: 3px 0 4px 6px;
     width: 168px;
 }
-.cart-content-right .buttons .promocode-form input[type=text] {
+.buttons .promocode-form input[type=text] {
     margin-right: 11px;
     padding: 3px 0 4px 6px;
     width: 157px;

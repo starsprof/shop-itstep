@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="cart-title">
-            <h1>заказ  {{ $order->created_at }} - {{ $order->status }}</h1>
+            <h1>Заказ  {{ $order->created_at }} - {{ $order->status }}</h1>
         </div>
         <div>
             @php
@@ -11,6 +11,7 @@
             @endphp
                 <div class="order">
                     <div class="add-info">
+
                         Count: {{ count($order->products) }}
                         <br>
                         Price: {{ array_sum(array_map(function ($product){
