@@ -86,7 +86,7 @@
                                 <div class="buttons" style="padding: 10px 0">
 
                                     <button class="change text-dark" href="#">Изменить</button>
-                                    <button class="remove text-dark" href="{{ route('cart-remove', $cartItem->rowId) }}">Удалить</button>
+                                    <button class="remove text-dark" data-id="{{ $cartItem->rowId }}" href="{{ route('cart-remove', $cartItem->rowId) }}">Удалить</button>
                                     <div class="button-popup">
                                     <span class="error-button error_1"
                                           style="display: none;">Нет других предложений</span>
@@ -97,9 +97,7 @@
                         </div>
                     </div>
 
-                    @push('scripts')
-                        <script src="{{asset('js/cart.js')}}"></script>
-                    @endpush
+
                 @endforeach
             </div>
             <div class="cart-content-right">
@@ -137,7 +135,7 @@
                     <div class="block-price-amount">
                         <ins>итого:</ins>
 
-                        <p class="price">{{ Cart::total() }} <span class="rub">Р</span></p>
+                        <p class="price"><span class="total-price"> {{ Cart::total() }}</span> <span class="rub">Р</span></p>
                     </div>
                     <a id="checkout" href="{{ action('\App\Http\Controllers\Front\OrderController@create') }}" class="button bg-warning yellow">ОФОРМИТЬ ЗАКАЗ</a>
                     <!-- <a href="javascript:void(0)" class="fastorder button grey button-pad-fix2">БЫСТРЫЙ ЗАКАЗ</a> -->
@@ -148,6 +146,6 @@
 
 @endsection
 
-{{--@push('scripts')--}}
-    {{--<script src="{{asset('js/cart.js')}}"></script>--}}
-{{--@endpush--}}
+@push('scripts')
+    <script src="{{asset('js/cart.js')}}"></script>
+@endpush

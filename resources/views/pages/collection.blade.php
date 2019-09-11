@@ -95,7 +95,9 @@
                                         <li><a href="#" data-tip="Quick View"><i class="fas fa-eye"></i></a></li>
                                         <li><a href="#" data-tip="Add to Wishlist"><i
                                                         class="fas fa-shopping-bag"></i></a></li>
-                                        <li><a href="{{ route('cart-add', ['id' => $product->id]) }}" data-tip="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
+                                        <li>
+                                            <a class="add-cart" data-id="{{ $product->id }}" href="{{ route('cart-add', ['id' => $product->id]) }}" data-tip="Add to Cart">
+                                                <i class="fas fa-shopping-cart"></i></a>
                                         </li>
                                     </ul>
                                     {{--<span class="product-new-label">New</span>--}}
@@ -130,3 +132,6 @@
         {{ $products->links() }}
     </div>
 @endsection
+@push('scripts')
+    <script src="{{asset('js/category.js')}}"></script>
+@endpush

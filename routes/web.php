@@ -28,8 +28,6 @@ Route::namespace('Admin')
 
 Route::namespace('Front')
     ->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-
     Route::view('/', 'pages.main');
     Route::get('/collection', 'PageController@index');
     Route::get('/collection/detail', 'PageController@detail')->name('detail');
@@ -47,6 +45,9 @@ Route::namespace('Front')
     Route::get('/cart/update/{rowId}', 'CartController@updateItem')
         ->name('cart-update')
         ->middleware('auth');
+
+    Route::post('/cart/ajax', 'CartController@addItemAjax');
+    Route::post('/cart/remove-ajax', 'CartController@removeItemAjax');
 
     Route::group([
         'middleware' => 'auth',

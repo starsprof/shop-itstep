@@ -28,14 +28,41 @@ class CartController extends Controller
             $size = $product->size[0];
         }
         Cart::add($product, 1, ['size' => $size]);
-        Cart::store(Auth::id());
         return redirect()->route('cart');
+    }
+
+    public function addItemAjax(Request $request)
+    {
+        $id = $request->all('id')['id'];
+        $product = Product::findOrFail($id);
+        $size = $product->size[0];
+        Cart::add($product, 1, ['size' => $size]);
+        $data = Cart::content()->map(function ($cartItem){
+            return [$cartItem->name, $cartItem->price, $cartItem->qty];
+        });
+        return response()->json(['content'=> $data, 'count' => Cart::count()]);
     }
 
     public function removeItem($rowId)
     {
         Cart::remove($rowId);
         return redirect()->route('cart');
+    }
+
+    public function removeItemAjax(Request $request)
+    {
+        $rowId = $request->all('rowId')['rowId'];
+        Cart::remove($rowId);
+        $data = Cart::content()->map(function ($cartItem){
+            return [$cartItem->name, $cartItem->price, $cartItem->qty];
+        });
+        return response()->json([
+            'success'=> true,
+            'content' => $data,
+            'count' => Cart::count(),
+            'price' => Cart::total()
+        ]);
+
     }
 
     public function updateItem(Request $request, $rowId)
