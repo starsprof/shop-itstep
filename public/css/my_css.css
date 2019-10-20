@@ -30,7 +30,9 @@ a {
 a:hover {
     color: orangered;
 }
-
+button, button:active, button:focus{
+    outline: 0;
+}
 .js-block{
     display: block;
 }
@@ -131,7 +133,66 @@ main.pb-4, main.py-4 {
 .slider img {
     width: 100%;
 }
+.slider {
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+.slider .slider-image{
+    position: relative;
+    height: 680px;
+}
+.slider .slider-image img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 2s;
+}
+.slider .slider-image img.showed{
+    opacity: 1;
+}
 
+.slider .slider-button .slider-button-cont{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    height: 65px;
+    margin: auto 0;
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    bottom: 0;
+    top: 0;
+    overflow: hidden;
+    width: 65px;
+    z-index: 1000;
+    text-indent: -9999px;
+}
+.slider .slider-button .prev {
+    background-image: url("../img/left.png");
+    left: 75px;
+}
+.slider .slider-button .next {
+    background-image: url(../img/right.png);
+    right: 75px;
+}
+.slider .slider-image img.showed{
+    /*opacity: 1;*/
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+.fade:not(.show) {
+    opacity: 1;
+}
 .catalog-wrap {
     margin-bottom: 20px;
 }

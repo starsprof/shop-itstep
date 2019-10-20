@@ -13,6 +13,8 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use function print_r;
+use function var_dump;
 
 class PageController extends Controller
 {
@@ -20,7 +22,6 @@ class PageController extends Controller
     {
         $products = Product::paginate(16);
         return view('pages.collection', compact('products'));
-
     }
 
     public function detail(Request $request)
