@@ -29,7 +29,7 @@ Route::namespace('Admin')
 Route::namespace('Front')
     ->group(function () {
     Route::view('/', 'pages.main');
-    Route::get('/collection', 'PageController@index');
+    Route::get('/collection', 'PageController@index')->name('collection');
     Route::get('/collection/detail', 'PageController@detail')->name('detail');
     Route::match(['get','post'],'/collection/category', 'PageController@category')->name('category');
 

@@ -80,7 +80,7 @@
                 <div class="address">
                     <form action="{{ route('payment') }}" method="post">
                         @csrf
-                        <label for="address">Адрес:</label>
+                        <label for="address">Введите адрес доставки</label>
                         <br>
                         <textarea name="address" id="address" cols="60" rows="5"></textarea>
                         <br>
