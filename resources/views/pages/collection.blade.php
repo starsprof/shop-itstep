@@ -11,8 +11,13 @@
                 <li class="breadcrumb-item">
                     <a href="{{url('/')}}">Главная</a>
                 </li>
+                @isset($category->parent)
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('category', ['id' => $category->parent_id]) }}">{{ $category->parent->title }}</a>
+                    </li>
+                @endisset
                 <li class="breadcrumb-item active" aria-current="page">
-
+                    {{ $category->title }}
                 </li>
             </ol>
         </nav>

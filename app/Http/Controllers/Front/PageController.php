@@ -61,7 +61,9 @@ class PageController extends Controller
             $products = Product::whereIn('category_id', $categoriesIds)->paginate(16);
         }
 
-        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'sizes', 'selectedSizes'));
+        $category = Category::with('parent')->find($categoryId);
+
+        return view('pages.collection', compact('products', 'parentCategoryId', 'categoryId', 'sizes', 'selectedSizes', 'category'));
     }
 
 

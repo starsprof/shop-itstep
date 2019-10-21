@@ -11,7 +11,7 @@
                     <a href="{{url('/')}}">Главная</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="">{{$product->category->title}}</a>
+                    <a href="{{ route('category', ['id' => $product->category_id]) }}">{{$product->category->title}}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">{{$product->title}}</li>
             </ol>
