@@ -127,7 +127,7 @@ footer .copyright {
 
 main.pb-4, main.py-4 {
     padding: 0 !important;
-    min-height: 500px;
+    min-height: 490px;
 }
 
 .slider img {
@@ -772,5 +772,24 @@ select option {
     font-weight: bold;
     font-size: 16px;
     line-height: 10px;
+}
+/*-------------------------------*/
+
+
+main .card-auth{
+    margin-top: 70px;
+    position: static;
+    background-color: #eee;
+}
+
+.card-auth .card-body p {
+    width: 70%;
+    margin: 20px auto 30px;
+    color: #6c757d;
+}
+.card-auth .card-header{
+    color: white;
+    background-color: #6c757d;
+    font-size: 16px;
 }
 
